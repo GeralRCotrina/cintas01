@@ -5,29 +5,55 @@
 
 {% block todo_blog %}
 
-
+ 
         <div class="card mb-4">
           <div class="card-header">{{msj}}   </div>
           <div class="card-body"  style="height:300px; overflow-x: scroll; ">
 
           	{% if cintas %}
+               <div class="container mt-0 mb-1">
+                    <div class="input-group w-100">
+                         <div class="input-group-prepend">
+                              <button id="rpta" class="btn btn-outline-secondary" type="button" disabled></button>
+                         </div>                         
+                         <input type="text" id="txt_buscado" onkeyup="Buscar()" placeholder="Filtrar.." class="form-control">
+                         <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="button" disabled><i class="fas fa-search"></i></button>
+                         </div>
+                    </div>
+               </div>
 
-          	<table class="table table-sm">
+          	<table id="TablaCntsAlp" class="table table-sm">
           		<thead>
-          			<tr style="background: #D4D4D2;"><td>ÍTEM</td>
-          				<td>CODIGO</td>
-          				<td>TIPO</td>
-          				<td>SERVICIO</td>
-          				<td>UBICACIÓN</td></tr>
-          		</thead>
+          			<tr style="background: #D4D4D2;">
+          				<td>CODIGO</td><td>ALOJADOR</td><td>POSICIÓN</td>
+                              <td>CLIENTE</td><td>TIPO</td>
+                         </tr>
+          		</thead><tbody id="LstCntsAlp">
 
           		{% for c in cintas %}
-          			<tr style="font-size: 0.6em;"><td>{{ c.pk }}</td><td>{{c.codigo}}</td><td>{{c.tipo}}</td><td>{{c.servicio}}</td><td>{{c.id_alojador}}</td></tr>
+          			<tr style="font-size: 0.6em;"><td>{{ c.codigo }}</td><td>{{c.alojador}}</td>
+                              <td>{{c.posicion}}</td><td>{{c.cliente}}</td><td>{{c.tipo}}</td> </tr>
 
           		{% endfor %}
-          	</table>
-          	{% else %}
-          	<p>Err: no llegó el json</p>
+          	</tbody></table>
+               {% elif alp %}<thead>
+                    <table class="table table-sm">
+                        <thead> <tr style="background: #D4D4D2;">
+                              <td>ALP</td>
+                              <td>NOMBRE</td>
+                              <td>CLIENTE</td>
+                              <td>ver</td>
+                         </tr></thead>
+                    </thead><tbody>
+                    {% for a in alp %}
+                         <TR><td>{{a.alp}}</td><td style="font-size:0.7em;">{{a.nombre}}</td> <td>{{a.cliente}}</td>
+                              <td><a href="{% url 'c_lis_alp' %}?alp={{a.alp}}" ><i class="fas fa-server"></i></a> </td></TR>
+
+                    {% endfor %}
+                    </tbody></table>
+               {% else %}
+          	    <p>Err: no llegó el json</p>
           	{% endif %}
            
           </div>
@@ -35,3 +61,23 @@
 
 
 {% endblock todo_blog %}
+
+
+{% block txt_procesos %}
+{% if procesos %}
+     PROYECTOS
+{% else %}
+     LISTADO DE ALPS
+{% endif %}
+{% endblock txt_procesos %}
+
+
+{% block procesos %}
+     {% if procesos %}
+          {% for pc in procesos %}
+               <i style="font-size:0.7em;"><a class="text-secondary"  href="{% url 'c_lis_alp' %}?alp={{pc.alp}}" >.   {{pc.cliente}}   </a></i>
+          {% endfor %}
+     {% else %}
+          Liste por ALP.
+     {% endif %}
+{% endblock procesos %}

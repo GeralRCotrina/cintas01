@@ -167,6 +167,7 @@ class UbicacionCinta(models.Model):
     id_alojador = models.ForeignKey(Alojadores, models.DO_NOTHING, db_column='id_alojador')
     id_movimiento = models.ForeignKey(Movimiento, models.DO_NOTHING, db_column='id_movimiento')
     posicion = models.IntegerField()
+    estado = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
         managed = False

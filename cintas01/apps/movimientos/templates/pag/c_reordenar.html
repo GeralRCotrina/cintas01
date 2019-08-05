@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+ {% block txt_blog %} actualizar ubcaciones{% endblock txt_blog %}
+
+{% block todo_blog %}
+
+ 
+       <div class="container border h-100  pt-1 mb-1">
+            <div class="row w-100">
+                 <div class="col-8">
+                    <input type="text" name="cgd_cinta"  style="text-transform: uppercase;" class="form-control" onkeyup="VerificarCod()" id="BarcodeCinta">
+                    <textarea class="form-control mt-1" style="text-transform: uppercase;"></textarea>
+                 </div>
+                 <div class="col-4">
+                    <div class="row">
+                         <div class="col-12 mt-1">
+                                <select class="form-control">
+                                   {% if alojadores %}
+                                        {% for al in alojadores %}
+                                              <option value="{{al.pk}}">{{al.nombre}}</option>
+                                        {% endfor %}
+                                   {% else %}
+                                        <option>Err</option>
+                                   {% endif %}
+                                </select>
+                           </div>
+                           <div class="col-6 mt-1">
+                              <label>Desde</label>
+                                <input type="number" min="1" max="58" step="1" name="desde" class="form-control">
+                           </div>
+                           <div class="col-6 mt-1">
+                              <label>Hasta</label>
+                              <input type="number" min="1" max="58" step="1"  name="hasta" class="form-control">
+                           </div>
+                      </div>
+                 </div>
+            </div>
+       </div>
+
+
+{% endblock todo_blog %}
+

@@ -193,29 +193,32 @@
 
         <!-- Categories Widget -->
         <div class="card my-4">
-          <h5 class="card-header">PROCESOS</h5>
+          <h5 class="card-header">{% block txt_procesos %}PROCESOS{% endblock txt_procesos %} </h5>
           <div class="card-body">
-            <div class="row">
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Buscar cintas</a>
-                  </li>
-                  <li>
-                    <a href="#">Mover cintas</a>
-                  </li>
-                  <li>
-                    <a href="#">Encontrar cintas</a>
-                   </li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Actualizar ubicaciónes</a>
-                  </li>
-                </ul>
-              </div>
+            <div class="row"> 
+              {% block procesos %}
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                      <li>
+                        <a href="#">Buscar cintas</a>
+                      </li>
+                      <li>
+                        <a href="#">Mover cintas</a>
+                      </li>
+                      <li>
+                        <a href="#">Encontrar cintas</a>
+                       </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                      <li>
+                        <a href="{% url 'c_reordenar' %}">Actualizar ubicaciónes</a>
+                      </li>
+                    </ul>
+                  </div>
+                {% endblock procesos %}
+                
             </div>
           </div>
         </div>
@@ -251,6 +254,10 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+  <!-- Mi JS -->
+  <script src="{% static 'js/cintas.js' %}"></script>
 
 </body>
 
