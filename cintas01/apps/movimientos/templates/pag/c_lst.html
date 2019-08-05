@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+ {% block txt_blog %} listado de cintas.{% endblock txt_blog %}
+
+{% block todo_blog %}
+
+
+        <div class="card mb-4">
+          <div class="card-header">{{msj}}   </div>
+          <div class="card-body"  style="height:300px; overflow-x: scroll; ">
+
+          	{% if cintas %}
+
+          	<table class="table table-sm">
+          		<thead>
+          			<tr style="background: #D4D4D2;"><td>ÍTEM</td>
+          				<td>CODIGO</td>
+          				<td>TIPO</td>
+          				<td>SERVICIO</td>
+          				<td>UBICACIÓN</td></tr>
+          		</thead>
+
+          		{% for c in cintas %}
+          			<tr style="font-size: 0.6em;"><td>{{ c.pk }}</td><td>{{c.codigo}}</td><td>{{c.tipo}}</td><td>{{c.servicio}}</td><td>{{c.id_alojador}}</td></tr>
+
+          		{% endfor %}
+          	</table>
+          	{% else %}
+          	<p>Err: no llegó el json</p>
+          	{% endif %}
+           
+          </div>
+        </div>
+
+
+{% endblock todo_blog %}
