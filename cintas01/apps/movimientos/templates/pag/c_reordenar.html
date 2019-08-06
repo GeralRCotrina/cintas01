@@ -6,16 +6,69 @@
 {% block todo_blog %}
 
  
-       <div class="container border h-100  pt-1 mb-1">
+       <div class="container border pb-2  pt-1 mb-1">
             <div class="row w-100">
+               <div class="col-12 ml-2">
+                    <label for="sel" class="label mb-0">Movimiento</label>
+                    <div class="btn-group btn-block">
+                         <button class="btn btn-outline-primary col-4"  data-toggle="modal" data-target="#exampleModal">REGISTRAR NUEVO</button>
+                         {% if movs %}
+                           <select  id="mov_id"  name="sel" class="form-control col-8">
+                              {% for m in movs %}
+                                  <option value="{{m.pk}}">{{m}}</option>
+                              {% endfor %}
+                            </select>
+                         {% else %}
+                            Err                           
+                          {% endif %}
+                               
+                    </div>
+                    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">NUEVO MOVIMIENTO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+              <div class="col-12">
+                    <form action="{% url 'm_reg1' %}" method="post">
+                      {% csrf_token %}
+                      <input name="id_asuth" id="id_id_asuth" value="{{user.pk}}" hidden="hidden">
+                      <p><label for="id_razon">Descripción:</label>
+                        <textarea type="text" name="razon" class="form-control" maxlength="500" required="" id="id_razon"></textarea></p>
+
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="subimt" class="btn btn-primary">Guardar movimiento</button><br><br>
+                    </form>
+
+                  </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+                    
+               </div>
+               <div class="col-12">
+                    <hr>
+               </div>
                  <div class="col-8">
-                    <input type="text" name="cgd_cinta"  style="text-transform: uppercase;" class="form-control" onkeyup="VerificarCod()" id="BarcodeCinta">
+                  <!--input type="text" name="" value="LPOD03L5"-->
+                    <input type="text" name="cgd_cinta"  style="text-transform: uppercase;" class="form-control text-center" onkeyup="VerificarCod()" id="BarcodeCinta">
                     <textarea class="form-control mt-1" style="text-transform: uppercase;"></textarea>
                  </div>
                  <div class="col-4">
                     <div class="row">
                          <div class="col-12 mt-1">
-                                <select class="form-control">
+                                <select id="alojador_id" class="form-control">
                                    {% if alojadores %}
                                         {% for al in alojadores %}
                                               <option value="{{al.pk}}">{{al.nombre}}</option>
@@ -27,11 +80,11 @@
                            </div>
                            <div class="col-6 mt-1">
                               <label>Desde</label>
-                                <input type="number" min="1" max="58" step="1" name="desde" class="form-control">
+                                <input id="min_id" type="number" min="1" max="58" step="1" name="desde" class="form-control" value="1">
                            </div>
                            <div class="col-6 mt-1">
                               <label>Hasta</label>
-                              <input type="number" min="1" max="58" step="1"  name="hasta" class="form-control">
+                              <input id="max_id" type="number" min="1" max="58" step="1"  name="hasta" class="form-control" value="58">
                            </div>
                       </div>
                  </div>

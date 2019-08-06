@@ -22,7 +22,9 @@
                          </div>
                     </div>
                </div>
-
+               <a href="#" onclick="tableToExcel('TablaCntsAlp', 'W3C Example Table')">
+                    Export to Excel
+               </a>
           	<table id="TablaCntsAlp" class="table table-sm">
           		<thead>
           			<tr style="background: #D4D4D2;">
@@ -33,7 +35,7 @@
 
           		{% for c in cintas %}
           			<tr style="font-size: 0.6em;"><td>{{ c.codigo }}</td><td>{{c.alojador}}</td>
-                              <td>{{c.posicion}}</td><td>{{c.cliente}}</td><td>{{c.tipo}}</td> </tr>
+                          <td>{{c.posicion}}</td><td>{{c.cliente}}</td><td>{{c.tipo}}</td> </tr>
 
           		{% endfor %}
           	</tbody></table>

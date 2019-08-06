@@ -18,7 +18,7 @@ function CargarDic(){
 			cont +=1;
 			cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
 			cintas.push({codigo:cellsOfRow[0].innerHTML,alojador:cellsOfRow[1].innerHTML,
-							pasicion:cellsOfRow[2].innerHTML,cliente:cellsOfRow[3].innerHTML,tipo:cellsOfRow[4].innerHTML});
+							posicion:cellsOfRow[2].innerHTML,cliente:cellsOfRow[3].innerHTML,tipo:cellsOfRow[4].innerHTML});
 		}
 		cintasBK=cintas;
 		primero = false;
@@ -75,24 +75,49 @@ function BorrarAnt(){
 }
 
 
+	
+
 function VerificarCod() {
 	var cad=document.getElementById('BarcodeCinta').value;
+	var min_id=document.getElementById('min_id').value;
+	var max_id=document.getElementById('max_id').value;
+
+	var a = parseInt(min_id, 10);
+	var b = parseInt(max_id, 10);
+
 	if(cad.length > 5 ){
-		VerificaDB(cad);
+		if(a > 0){
+			if(a <= b){
+				console.log("min_id ok");
+				VerificaDB(cad,min_id);
+			}else{
+				alert("Err > Corrija el intervalo   min="+min_id+"  >  max="+max_id);
+			}
+		}else{
+			alert("Err > Corrija el intervalo   min="+min_id+" es 0");
+		}
 	}
 }
 
-function VerificaDB(cad){
-	alert(">"+cad.length);
+function VerificaDB(cad,min){
+	//alert(">"+cad.length);
+	var idaloj=document.getElementById('alojador_id').value;
+	var mov_id=document.getElementById('mov_id').value;
 	
 	var xhr = new XMLHttpRequest();
-	var cad = "/c_ubicar/?cod="+cad;
+	var cad = "/c_ubicar/?cod="+cad+"&&alj="+idaloj+"&&pos="+min+"&&mov="+mov_id;
 	xhr.open('GET',cad,true); // sincrono o asincrono
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
-			console.log("retornó successfull-1");
-			alert("retornó 4|200");
+			console.log(" ->"+xhr.response);
+			if(xhr.response == "true"){
+				var min_id=document.getElementById('min_id');
+				document.getElementById('BarcodeCinta').select();
+				min_id.value =  parseInt(min, 10)+1;
+				est =true;
+			}
 		}
 	}
 	xhr.send();
+
 }

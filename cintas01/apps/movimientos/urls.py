@@ -15,6 +15,10 @@ urlpatterns = [
 	re_path(r'^c_lis_alp/?/$',login_required(views.CinLstAlp.as_view()),name='c_lis_alp'),
 	re_path(r'^c_reordenar/',login_required(views.ReordenarCintas.as_view()),name='c_reordenar'),
 	re_path(r'^c_ubicar/?/$',login_required(views.ActulizarUbicacion.as_view()),name='c_ubicar'),
+
+	re_path(r'^m_reg$',login_required(views.MovimientoCreate.as_view()),name='m_reg'),
+	re_path(r'^m_reg1$',login_required(views.MovimientoCreate1.as_view()),name='m_reg1'),
+	re_path(r'^c_lst_alj$',login_required(views.CinLstAlj.as_view()),name='c_lst_alj'),
 ]
 
 

@@ -19,7 +19,10 @@
   <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
   <link href="{% static 'css/mi-style.css' %}" rel="stylesheet">
 
-   <link rel="icon" href="{% static 'img/canvia.png' %}">
+  <link rel="icon" href="{% static 'img/canvia.png' %}">
+
+  <!-- js -->   
+  <script src="{% static 'js/tableToExcel.js' %}"></script>
 
 </head>
 
@@ -200,10 +203,10 @@
                   <div class="col-lg-6">
                     <ul class="list-unstyled mb-0">
                       <li>
-                        <a href="#">Buscar cintas</a>
+                        <a href="{% url 'm_reg' %}">Movimiento</a>
                       </li>
                       <li>
-                        <a href="#">Mover cintas</a>
+                        <a href="{% url 'c_lst_alj' %}?ida=6">Por_Alojador</a>
                       </li>
                       <li>
                         <a href="#">Encontrar cintas</a>

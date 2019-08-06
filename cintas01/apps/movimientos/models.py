@@ -17,6 +17,13 @@ class Alojadores(models.Model):
         managed = False
         db_table = 'alojadores'
 
+    def Aljs(self):
+        cadena="{1}"
+        return cadena.format(self.pk,self.nombre)
+        
+    def __str__(self):
+        return self.Aljs()
+
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -146,9 +153,17 @@ class Movimiento(models.Model):
     hora = models.TimeField()
     razon = models.CharField(max_length=500)
 
+    def Movim(self):
+        cadena="Mov:[{0}] {1}[{2}]"
+        return cadena.format(self.pk,self.fecha,self.hora)
+        
+    def __str__(self):
+        return self.Movim()
+
     class Meta:
         managed = False
         db_table = 'movimiento'
+
 
 
 class Proyectos(models.Model):

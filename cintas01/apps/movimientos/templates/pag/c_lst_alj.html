@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+
+ {% block txt_blog %} actualizar ubcaciones{% endblock txt_blog %}
+
+{% block todo_blog %}
+
+<div class="row container">
+	<div class="col-12">
+		{% if aljs %}
+			<div class="btn-group btn-block">
+				<select id="id_alj_selc" class="form-control">
+					{% for a in aljs %}
+							<option value="{{a.pk}}">{{a}}</option>
+					{% endfor %}
+				</select>
+				<a href="#" onclick="alert('ok');" class="btn btn-outline-primary">B</a>
+			</div>
+		{% else %}
+			Err
+		{% endif %}
+	</div>
+	{% if lstCnts %}
+		<div class="col-12 mt-1 border">
+			<a href="#" onclick="tableToExcel('testTable', 'W3C Example Table')">
+				Export to Excel
+			</a>
+			<table class="table table-sm" id="testTable">
+				<thead style="background: #E1E1E1;">
+					<tr><td>Condigo</td>
+					<td>Proyecto</td>
+					<td>Cliente</td>
+					<td>Alojador</td>
+					<td>Posicion</td></tr>
+				</thead>
+				<tbody>
+					{% for c in lstCnts %}
+						<tr style="font-size:0.7em;"><td>{{c.codigo}}</td>
+						<td>{{c.proyecto}}</td>
+						<td>{{c.cliente}}</td>
+						<td>{{c.alojador}}</td>
+						<td>{{c.posicion}}</td></tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	{% endif %}
+		
+</div>
+
+
+{% endblock todo_blog %}
+
