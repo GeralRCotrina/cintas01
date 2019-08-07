@@ -5,11 +5,12 @@ from apps.movimientos.models import *
 from apps.movimientos.forms import *
 from django.contrib.auth import authenticate, login
 
+from django.contrib import messages
 from django.urls import reverse_lazy
 
 
 import datetime
-
+ 
 
 def index(request):
 	return render(request,'index.html')
@@ -188,3 +189,54 @@ class CinLstAlj(View):
             'lstCnts':lstCnts
         }
         return render(request,'pag/c_lst_alj.html',jsn)
+
+
+
+class AljCreate(CreateView):
+    model=Alojadores
+    form_class=AljForm
+    template_name='alj/a_reg.html'
+    success_url=reverse_lazy('a_lis')
+
+class  AljUpdate(UpdateView):
+    model=Alojadores
+    form_class=AljForm
+    template_name='alj/a_reg.html'
+    success_url=reverse_lazy('a_lis')
+
+class  AljDelete(DeleteView):
+    model=Alojadores
+    form_class=AljForm
+    template_name='alj/a_eli.html'
+    success_url=reverse_lazy('a_lis')
+
+class  AljList(ListView):
+    model=Alojadores
+    template_name='alj/a_lis.html'
+    paginate_by=9
+
+
+
+
+class ProyCreate(CreateView):
+    model=Proyectos
+    form_class=ProyForm
+    template_name='proy/p_reg.html'
+    success_url=reverse_lazy('a_lis')
+
+class  ProyUpdate(UpdateView):
+    model=Proyectos
+    form_class=ProyForm
+    template_name='proy/p_reg.html'
+    success_url=reverse_lazy('a_lis')
+
+class  ProyDelete(DeleteView):
+    model=Proyectos
+    form_class=ProyForm
+    template_name='proy/p_eli.html'
+    success_url=reverse_lazy('a_lis')
+
+class  ProyList(ListView):
+    model=Proyectos
+    template_name='proy/p_lis.html'
+    paginate_by=9

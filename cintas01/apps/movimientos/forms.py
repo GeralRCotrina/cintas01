@@ -23,3 +23,49 @@ class MovimientoForm(forms.ModelForm):
 			    'razon':forms.TextInput(attrs={'class':'form-control'}),
 		    }
 
+class AljForm(forms.ModelForm): 
+
+	class Meta:
+		model = Alojadores
+
+		fields = ['nombre','ubicacion_cot','tamano']	
+
+		labels = {
+			'nombre':'Nombre',
+			'ubicacion_cot':'Se encuentra en',
+			'tamano':'Tamaño',
+		}
+
+		widgets={	
+			    'nombre':forms.TextInput(attrs={'class':'form-control'}),
+			    'ubicacion_cot':forms.TextInput(attrs={'class':'form-control','type':'text'}),
+			    'tamano':forms.TextInput(attrs={'class':'form-control','type':'number'}),
+		    }
+  
+
+
+class ProyForm(forms.ModelForm): 
+
+	class Meta:
+		model = Proyectos
+
+		fields = ['nombre','cliente','alp','descripcion']	
+
+		labels = {
+			'nombre':'Proyecto',
+			'cliente':'Cliente',
+			'alp':'ALP',
+			'descripcion':'Descripción',
+		}
+
+		widgets={	
+			    'nombre':forms.TextInput(attrs={'class':'form-control'}),
+			    'cliente':forms.TextInput(attrs={'class':'form-control','type':'text'}),
+			    'alp':forms.TextInput(attrs={'class':'form-control','type':'number','col':'2'}),
+			    'descripcion':forms.TextInput(attrs={'class':'form-control'}),
+		    }
+  
+
+
+
+

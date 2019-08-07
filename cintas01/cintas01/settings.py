@@ -26,7 +26,7 @@ SECRET_KEY = 'n&^w$^3_&ubw2u01*+47)$au2x*iks*5)-l(x3*xce!32pm#7l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.241.201.82']
 
 
 # Application definition

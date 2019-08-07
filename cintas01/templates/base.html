@@ -203,20 +203,23 @@
                   <div class="col-lg-6">
                     <ul class="list-unstyled mb-0">
                       <li>
-                        <a href="{% url 'm_reg' %}">Movimiento</a>
-                      </li>
-                      <li>
                         <a href="{% url 'c_lst_alj' %}?ida=6">Por_Alojador</a>
                       </li>
                       <li>
-                        <a href="#">Encontrar cintas</a>
-                       </li>
+                        <a href="{% url 'c_lis_alp' %}?alp=103855">Por_Proyecto</a>
+                      </li>
+                      <li>
+                        <a href="{% url 'c_reordenar' %}">Ubicaciónes</a>
+                      </li>
                     </ul>
                   </div>
                   <div class="col-lg-6">
-                    <ul class="list-unstyled mb-0">
+                    <ul class="list-unstyled mb-0" style="font-size:0.8em; font-style: italic;">
+                      <li >
+                        <a href="{% url 'p_lis' %}">proyectos</a>
+                      </li>
                       <li>
-                        <a href="{% url 'c_reordenar' %}">Actualizar ubicaciónes</a>
+                        <a href="{% url 'a_lis' %}">alojadores</a>
                       </li>
                     </ul>
                   </div>
@@ -226,15 +229,60 @@
           </div>
         </div>
 
+
+
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">{% block txt_nreg %}NUEVO REGISTROS{% endblock txt_nreg %} </h5>
+          <div class="card-body">
+            <div class="row"> 
+              {% block nreg %}
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                      <li>
+                        <a href="#' %}?ida=6">Cinta</a>
+                      </li>
+                      <li>
+                        <a href="{% url 'm_reg' %}">Movimiento</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                      <li>
+                        <a href="#">Proyecto</a>
+                      </li>
+                      <li>
+                        <a href="#">Alojador</a>
+                      </li>
+                    </ul>
+                  </div>
+                {% endblock nreg %}
+                
+            </div>
+          </div>
+        </div>
+
+
         <!-- Side Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Novedades</h5>
+          <h5 class="card-header">Información</h5>
           <div class="card-body pt-1" style="font-size: 0.7em; font-style: italic;">
+            <br>
             <i class="fas fa-thumbtack" style=""></i>   Estamos desarrollando un proceso que redusca el tiempo 
             en la ubicación de las cintas. <br><br>
+            <i class="fas fa-thumbtack"></i>  . <br>
+            <i class="fas fa-thumbtack"></i>  . <br>
+            <i class="fas fa-thumbtack"></i>  . <br>
+            <i class="fas fa-thumbtack"></i>  . <br>
+            <i class="fas fa-thumbtack"></i>  . <br>
             <i class="fas fa-thumbtack"></i>   Otros. <br>
           </div>
         </div>
+
+
+        
+       
 
       </div>
 

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+ {% block txt_blog %} registrar alojador{% endblock txt_blog %}
+
+{% block todo_blog %}
+	<div class="row">
+		<div class="col-12 border">
+			<form method="post">
+				{% csrf_token %}
+				{{form.as_p}}
+				<button type="submit" class="btn btn-primary btn-block">GUARDAR</button><br><br><br><br>
+			</form>
+
+		</div>
+	</div>
+{% endblock todo_blog %}

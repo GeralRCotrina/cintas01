@@ -4,7 +4,7 @@ from apps.movimientos import views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
 
-
+ 
 urlpatterns = [
 	re_path(r'^$', views.index,name='index'),
 	re_path(r'index', views.index,name='index'),
@@ -19,6 +19,16 @@ urlpatterns = [
 	re_path(r'^m_reg$',login_required(views.MovimientoCreate.as_view()),name='m_reg'),
 	re_path(r'^m_reg1$',login_required(views.MovimientoCreate1.as_view()),name='m_reg1'),
 	re_path(r'^c_lst_alj$',login_required(views.CinLstAlj.as_view()),name='c_lst_alj'),
+
+	re_path(r'^a_lis/',login_required(views.AljList.as_view()),name='a_lis'),
+	re_path(r'^a_reg/',login_required(views.AljCreate.as_view()),name='a_reg'),
+	re_path(r'^a_edi/(?P<pk>\d+)/$',login_required(views.AljUpdate.as_view()),name='a_edi'),
+	re_path(r'^a_eli/(?P<pk>\d+)/$',login_required(views.AljDelete.as_view()),name='a_eli'),
+
+	re_path(r'^p_lis/',login_required(views.ProyList.as_view()),name='p_lis'),
+	re_path(r'^p_reg/',login_required(views.ProyCreate.as_view()),name='p_reg'),
+	re_path(r'^p_edi/(?P<pk>\d+)/$',login_required(views.ProyUpdate.as_view()),name='p_edi'),
+	re_path(r'^p_eli/(?P<pk>\d+)/$',login_required(views.ProyDelete.as_view()),name='p_eli'),
 ]
 
 

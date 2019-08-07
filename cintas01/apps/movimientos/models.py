@@ -70,6 +70,12 @@ class AuthUser(models.Model):
         managed = False
         db_table = 'auth_user'
 
+    def Usrr(self):
+        cadena="{0} {1}"
+        return cadena.format(self.first_name,self.last_name)
+        
+    def __str__(self):
+        return self.Usrr()
 
 class AuthUserGroups(models.Model):
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)

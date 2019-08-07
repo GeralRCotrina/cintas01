@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+ {% block txt_blog %} registrar alojador{% endblock txt_blog %}
+
+{% block todo_blog %}
+	<div class="container border">
+		<br>
+		<form method="post">
+			{% csrf_token %}
+			<h2>¿Seguro que desea borrar "{{ object.nombre }}" ?</h2>
+			<a href="{% url 'p_lis' %}" class="btn btn-success">Cancelar</a>
+			<button class="btn  btn-danger" type="submit">Sí, eliminar</button>		
+		</form><br>
+	</div>
+{% endblock todo_blog %}

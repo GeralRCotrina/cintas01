@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+ {% block txt_blog %} registrar alojador{% endblock txt_blog %}
+
+{% block todo_blog %}
+
+{% csrf_token %}
+	{% if object_list %}
+		<a href="#" onclick="tableToExcel('TablaCntsAlp', 'W3C Example Table')"> Exportar a excel</a>       
+		<a href="{% url 'a_reg' %}">Nuevo alojador</a>
+		<table id="TablaCntsAlp" class="table table-sm">
+			<thead>
+				<tr style="background:#EFE7E7;">
+					<td>pk</td>
+					<td>NOMBRE</td>
+					<td>UBICACIÓN</td>
+					<td>TAMAÑO</td>
+					<td>EDITAR</td>
+				</tr>
+			</thead>
+			{% for ob in object_list %}
+
+				<tr style="font-size:0.7em;">
+					<td>{{ob.pk}}</td>
+					<td>{{ ob.nombre }}</td>
+					<td>{{ ob.ubicacion_cot }}</td>
+					<td>{{ ob.tamano }}</td>
+					<td>
+						<a href="{% url 'a_edi' ob.pk %}"><i class="fas fa-edit text-warning"></i></a> |
+						<a href="{% url 'a_eli' ob.pk %}"><i class="fas fa-trash-alt text-danger"></i></a>
+		
+					</td>
+				</tr>
+
+			{% endfor %}
+		</table>
+							
+	{% else %}
+		<h1>NO HAY Canales</h1>
+	{% endif %}
+
+
+
+
+
+
+{% endblock todo_blog %}
+
+
